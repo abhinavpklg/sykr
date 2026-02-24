@@ -6,11 +6,11 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SYKR — Every new tech job, within hours",
+  title: "Jobsekr — Every new tech job, within hours",
   description:
     "Job aggregation platform for US-based tech professionals. Fresh jobs from 14+ ATS platforms, updated multiple times daily.",
   openGraph: {
-    title: "SYKR — Every new tech job, within hours",
+    title: "Jobsekr — Every new tech job, within hours",
     description:
       "Fresh jobs from Greenhouse, Lever, Ashby, and 11 more ATS platforms.",
     type: "website",

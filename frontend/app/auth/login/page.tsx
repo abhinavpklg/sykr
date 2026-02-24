@@ -69,7 +69,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm space-y-6">
         <div className="text-center">
           <Link href="/" className="text-2xl font-bold text-white">
-            SYKR
+            Jobsekr
           </Link>
           <p className="mt-2 text-sm text-gray-400">
             {isSignUp ? "Create your account" : "Sign in to your account"}

@@ -24,7 +24,7 @@ export default function Header() {
             href="/"
             className="text-lg font-bold tracking-tight text-white hover:text-accent transition-colors"
           >
-            SYKR
+            Jobsekr
           </Link>
           <nav className="hidden sm:flex items-center gap-4">
             <Link
