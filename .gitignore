@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.env
+node_modules/
+.next/
+out/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+backend/.scraper_checkpoint.json
+backend/seed_data/
