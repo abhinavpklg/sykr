@@ -52,6 +52,7 @@ export function useJobActions() {
     });
 
     return () => subscription.unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const upsertState = useCallback(

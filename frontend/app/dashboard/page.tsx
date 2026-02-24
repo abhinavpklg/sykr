@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { createSupabaseBrowser } from "@/lib/supabase-browser";
 import { useJobActionsContext } from "@/components/JobActionsProvider";
-import type { Job, UserJobState } from "@/lib/types";
+import type { Job } from "@/lib/types";
 import Header from "@/components/Header";
 import JobCard from "@/components/JobCard";
 
@@ -17,7 +17,7 @@ const TABS: { key: Tab; label: string }[] = [
 ];
 
 export default function DashboardPage() {
-  const { user, loading: actionsLoading, states, counts } =
+  const { loading: actionsLoading, states, counts } =
     useJobActionsContext();
   const [activeTab, setActiveTab] = useState<Tab>("saved");
   const [jobs, setJobs] = useState<Job[]>([]);
@@ -54,6 +54,7 @@ export default function DashboardPage() {
     if (!actionsLoading) {
       fetchJobs();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [states, actionsLoading]);
 
   // Filter jobs by active tab
