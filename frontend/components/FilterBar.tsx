@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState, useTransition } from "react";
-import { REMOTE_OPTIONS, SORT_OPTIONS, LOCATION_OPTIONS } from "@/lib/types";
+import { REMOTE_OPTIONS, LOCATION_OPTIONS, TIME_RANGE_OPTIONS } from "@/lib/types";
 
 interface FilterBarProps {
   totalJobs: number;
@@ -120,11 +120,11 @@ export default function FilterBar({ totalJobs }: FilterBarProps) {
             </select>
 
             <select
-              value={searchParams.get("sort") || "recent"}
-              onChange={(e) => updateFilters("sort", e.target.value)}
+              value={searchParams.get("days") || ""}
+              onChange={(e) => updateFilters("days", e.target.value)}
               className={selectClass}
             >
-              {SORT_OPTIONS.map((opt) => (
+              {TIME_RANGE_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>
                   {opt.label}
                 </option>

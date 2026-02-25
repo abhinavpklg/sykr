@@ -14,7 +14,7 @@ interface PageProps {
     remote?: string;
     ats?: string;
     location?: string;
-    sort?: string;
+    days?: string;
     page?: string;
   }>;
 }
@@ -47,9 +47,6 @@ async function fetchJobs(
   if (params.location) {
     query = query.ilike("location", `%${params.location}%`);
   }
-
-  const ascending = params.sort === "oldest";
-  query = query.order("first_seen", { ascending });
 
   const page = Math.max(1, parseInt(params.page || "1", 10) || 1);
   const from = (page - 1) * PAGE_SIZE;
@@ -91,7 +88,7 @@ async function fetchStats(): Promise<{ jobCount: number; companyCount: number; a
 
 export default async function HomePage({ searchParams }: PageProps) {
   const params = await searchParams;
-  const hasFilters = params.q || params.remote || params.ats || params.location || params.page;
+  const hasFilters = params.q || params.remote || params.ats || params.location || params.days || params.page;
 
   const [{ jobs, count, page, totalPages }, stats] = await Promise.all([
     fetchJobs(params),

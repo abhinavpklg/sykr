@@ -162,6 +162,18 @@ export const SORT_OPTIONS = [
   { value: "oldest", label: "Oldest first" },
 ] as const;
 
+export const TIME_RANGE_OPTIONS = [
+  { value: "", label: "All time" },
+  { value: "1", label: "Past 24 hours" },
+  { value: "3", label: "3 days" },
+  { value: "7", label: "1 week" },
+  { value: "14", label: "2 weeks" },
+  { value: "21", label: "3 weeks" },
+  { value: "30", label: "1 month" },
+  { value: "60", label: "2 months" },
+  { value: "90", label: "3 months" },
+] as const;
+
 // Application pipeline statuses (order matters for funnel)
 export const PIPELINE_STATUSES = [
   { value: "applied", label: "Applied", color: "var(--accent)" },
