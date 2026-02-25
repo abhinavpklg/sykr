@@ -22,7 +22,7 @@
 - [x] Company discovery (seed, GitHub, cross-probe)
 - [x] Async scraper with batch inserts, checkpoint resume, connection retry
 - [x] 517 companies, 261 verified, 20,437 jobs scraped
-- [ ] GitHub Actions crons (deployed, pending verification)
+- [x] GitHub Actions crons deployed (scrape 3×/day, discover 2×/day, cleanup 1×/day)
 
 ---
 
@@ -45,51 +45,66 @@
 
 ---
 
-## Day 5 — Analytics + Polish (In Progress)
+## Day 5 — Analytics + Polish ✅
 
-- [ ] **Analytics page** (`/analytics`):
-  - [ ] Stats cards: today's applications, past month, total all-time
-  - [ ] Search bar for historical job applications
-  - [ ] Status pipeline: applied → screening → interviewing → offer / rejected / archived
-  - [ ] User can update job status from the analytics page
-  - [ ] Visual application funnel chart
-- [ ] Build `backend/cleanup.py` ✅
-- [ ] GitHub Actions crons verified
-- [ ] Frontend polish:
-  - [ ] Toast notifications for actions
-  - [ ] Mobile responsive fixes
-  - [ ] Favicon and branding
-- [ ] SEO: page titles, meta descriptions
+- [x] Analytics page (`/analytics`):
+  - [x] Stats cards: today's applications, past month, total all-time
+  - [x] Search bar for historical job applications
+  - [x] Status pipeline: applied → screening → interviewing → offer / rejected / archived
+  - [x] User can update job status from the analytics page
+  - [x] Visual application funnel chart
+- [x] `backend/cleanup.py` built
+- [x] GitHub Actions crons deployed
+- [x] Landing hero section with live stats + features + ATS strip
+- [x] About page (`/about`)
+- [x] Contact page (`/contact`) with feedback form
+- [x] Persistent footer (Built by Abhinav)
+- [x] Favicon + logo SVG
+- [x] Logo-based Spinner component on all loading states
+- [x] Keyboard navigation (/ to focus search, Escape to clear/close)
+- [x] README.md
+- [x] Performance check script — all queries under 500ms
+- [x] E2E test checklist created
 
 ---
 
-## Day 6 — Testing & Hardening
+## Day 6 — Testing & Launch Prep (In Progress)
 
-- [ ] End-to-end testing all flows
-- [ ] Performance checks (<2s load, <500ms search)
-- [ ] Error monitoring
+- [ ] Run E2E test checklist on live site
+- [ ] Mobile responsive testing + fixes
+- [ ] Fix any bugs found in testing
+- [ ] Verify GitHub Actions scraper runs successfully with batch upsert fix
+- [ ] Re-run scraper locally with raw_data for modal descriptions
 
 ---
 
 ## Day 7 — Launch
 
-- [ ] Landing hero section
-- [ ] README.md
-- [ ] Launch posts (Twitter, Reddit, HN, LinkedIn)
-- [ ] Monitoring setup
+- [ ] Final bug sweep
+- [ ] Launch posts:
+  - [ ] Twitter/X thread
+  - [ ] Reddit r/webdev, r/cscareerquestions
+  - [ ] Hacker News Show HN
+  - [ ] LinkedIn post
+  - [ ] Indie Hackers
+- [ ] Monitor:
+  - [ ] Supabase dashboard (connections, storage, MAU)
+  - [ ] Vercel analytics (page views, errors)
+  - [ ] GitHub Actions logs (cron success/failure)
+- [ ] **Checkpoint:** LIVE 🚀
 
 ---
 
-## Metrics After Launch
+## Metrics
 
-| Metric | Day 1 | Day 3 | Day 7 |
-|---|---|---|---|
-| Jobs in DB | 20,437 | | |
-| Companies tracked | 517 | | |
-| ATS sources live | 7 | | |
-| Registered users | 0 | | |
-| Page views | 0 | | |
-| Jobs applied/saved | 0 | | |
+| Metric | Day 1 | Current |
+|---|---|---|
+| Jobs in DB | 20,437 | 23,209 |
+| Companies tracked | 517 | 518 |
+| ATS sources live | 7 | 14 parsers (7 returning jobs) |
+| Registered users | 0 | — |
+| Page views | 0 | — |
+| Jobs applied/saved | 0 | — |
 
 ---
 
@@ -97,12 +112,13 @@
 
 | # | Description | Status | Fixed In |
 |---|---|---|---|
-| 1 | Supabase HTTP/2 connection drop after ~10k requests | Fixed | Day 2 |
+| 1 | Supabase HTTP/2 connection drop after ~10k requests | Fixed | Day 2 — retry + client reset |
 | 2 | Parser __pycache__ stale module cache | Fixed | Day 2 |
 | 3 | YC Work at a Startup returns 0 (JS-rendered) | Known | Deferred |
 | 4 | ESLint unused vars in dashboard/profile | Fixed | Day 4 |
 | 5 | useSearchParams needs Suspense boundary | Fixed | Day 4 |
-| 6 | Scraper timeout on GitHub Actions (15min) | Fixed | Day 5 — batch inserts |
+| 6 | Scraper timeout on GitHub Actions (15min) | Fixed | Day 5 — batch upsert |
+| 7 | Batch insert 409 conflict on duplicate url_hash | Fixed | Day 5 — upsert with ignore_duplicates |
 
 ---
 
@@ -119,3 +135,4 @@
 | Feb 24 | GitHub Actions over Railway | Free for public repos |
 | Feb 24 | Job detail modal instead of page | Better browse UX, kept /job/[id] for SEO |
 | Feb 24 | Batch job inserts | 10x faster scraper for GitHub Actions budget |
+| Feb 24 | upsert with ignore_duplicates | Eliminated 409 conflicts on batch inserts |
