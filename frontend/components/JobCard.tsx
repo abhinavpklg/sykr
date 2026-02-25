@@ -11,6 +11,7 @@ import {
 import { useJobActionsContext } from "@/components/JobActionsProvider";
 import { createSupabaseBrowser } from "@/lib/supabase-browser";
 import JobDetailModal from "@/components/JobDetailModal";
+import Spinner from "@/components/Spinner";
 
 interface JobCardProps {
   job: Job;
@@ -112,7 +113,7 @@ export default function JobCard({
         {/* Loading spinner for modal fetch */}
         {modalLoading && (
           <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-bg-primary/60">
-            <div className="h-6 w-6 animate-spin rounded-full border-2 border-border border-t-accent" />
+            <Spinner size="sm" />
           </div>
         )}
 

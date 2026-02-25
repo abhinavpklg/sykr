@@ -9,6 +9,7 @@ import { timeAgo, atsDisplayName } from "@/lib/utils";
 import Header from "@/components/Header";
 import ApplicationFunnel from "@/components/ApplicationFunnel";
 import JobDetailModal from "@/components/JobDetailModal";
+import Spinner from "@/components/Spinner";
 
 export default function AnalyticsPage() {
   const { loading: actionsLoading, states, upsertState } = useJobActionsContext();
@@ -126,7 +127,7 @@ export default function AnalyticsPage() {
         <Header />
         <main className="mx-auto max-w-5xl px-4 py-10">
           <div className="flex items-center justify-center py-20">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-accent" />
+            <Spinner size="lg" />
           </div>
         </main>
       </div>
@@ -197,7 +198,7 @@ export default function AnalyticsPage() {
         {/* Applications table */}
         {loadingJobs ? (
           <div className="flex items-center justify-center py-20">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-accent" />
+            <Spinner />
           </div>
         ) : sortedJobs.length === 0 ? (
           <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-border py-16 text-center">

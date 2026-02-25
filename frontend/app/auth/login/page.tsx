@@ -4,6 +4,7 @@ import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { createSupabaseBrowser } from "@/lib/supabase-browser";
+import Spinner from "@/components/Spinner";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -168,7 +169,7 @@ export default function LoginPage() {
     <Suspense
       fallback={
         <div className="flex min-h-screen items-center justify-center">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-accent" />
+          <Spinner size="lg" />
         </div>
       }
     >

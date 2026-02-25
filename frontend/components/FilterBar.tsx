@@ -41,8 +41,22 @@ export default function FilterBar({ totalJobs }: FilterBarProps) {
     if (e.key === "Escape") {
       setQuery("");
       updateFilters("q", "");
+      (e.target as HTMLInputElement).blur();
     }
   };
+
+  // Global keyboard shortcut: "/" to focus search
+  const searchRef = useCallback((node: HTMLInputElement | null) => {
+    if (!node) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "/" && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA" && document.activeElement?.tagName !== "SELECT") {
+        e.preventDefault();
+        node.focus();
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, []);
 
   const selectClass =
     "rounded-md border border-border bg-surface px-3 py-2 text-sm text-t-secondary focus:border-accent focus:outline-none";
@@ -68,11 +82,12 @@ export default function FilterBar({ totalJobs }: FilterBarProps) {
                 />
               </svg>
               <input
+                ref={searchRef}
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Search jobs... (e.g. react, python, senior engineer)"
+                placeholder="Search jobs... (press / to focus)"
                 className="w-full rounded-md border border-border bg-surface py-2 pl-10 pr-4 text-sm text-t-primary placeholder-t-muted focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
               />
             </div>

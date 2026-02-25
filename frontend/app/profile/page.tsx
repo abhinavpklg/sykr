@@ -8,6 +8,7 @@ import { useTheme } from "@/components/ThemeProvider";
 import { REMOTE_OPTIONS, ATS_OPTIONS, LOCATION_OPTIONS, SORT_OPTIONS } from "@/lib/types";
 import type { UserProfile } from "@/lib/types";
 import Header from "@/components/Header";
+import Spinner from "@/components/Spinner";
 
 interface Preferences {
   default_query?: string;
@@ -108,7 +109,7 @@ export default function ProfilePage() {
         <Header />
         <main className="mx-auto max-w-2xl px-4 py-10">
           <div className="flex items-center justify-center py-20">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-accent" />
+            <Spinner size="lg" />
           </div>
         </main>
       </div>

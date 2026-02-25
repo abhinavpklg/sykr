@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useJobActionsContext } from "@/components/JobActionsProvider";
 import { useTheme } from "@/components/ThemeProvider";
 import { createSupabaseBrowser } from "@/lib/supabase-browser";
+import Spinner from "@/components/Spinner";
 
 export default function Header() {
   const { user, loading, counts } = useJobActionsContext();
@@ -83,7 +84,7 @@ export default function Header() {
           </button>
 
           {loading ? (
-            <div className="h-8 w-20 animate-pulse rounded bg-surface" />
+            <Spinner size="sm" />
           ) : user ? (
             <div className="flex items-center gap-3">
               <Link

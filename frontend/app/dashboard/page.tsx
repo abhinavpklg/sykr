@@ -6,6 +6,7 @@ import { useJobActionsContext } from "@/components/JobActionsProvider";
 import type { Job } from "@/lib/types";
 import Header from "@/components/Header";
 import JobCard from "@/components/JobCard";
+import Spinner from "@/components/Spinner";
 
 type Tab = "saved" | "applied" | "hidden" | "all";
 
@@ -79,7 +80,7 @@ export default function DashboardPage() {
         <Header />
         <main className="mx-auto max-w-7xl px-4 py-10">
           <div className="flex items-center justify-center py-20">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-accent" />
+            <Spinner size="lg" />
           </div>
         </main>
       </div>
@@ -133,7 +134,7 @@ export default function DashboardPage() {
         {/* Job list */}
         {loadingJobs ? (
           <div className="flex items-center justify-center py-20">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-accent" />
+            <Spinner />
           </div>
         ) : filteredJobs.length === 0 ? (
           <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-border py-20 text-center">
