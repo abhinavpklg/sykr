@@ -119,7 +119,7 @@ export default function JobDetailModal({ job, onClose }: JobDetailModalProps) {
                 <span className="font-medium text-t-primary">{job.company_name}</span>
               )}
               {job.location && <span>📍 {job.location}</span>}
-              <span>🕐 {timeAgo(job.first_seen)}</span>
+              <span>🕐 {timeAgo(job.posted_at || job.first_seen)}</span>
             </div>
           </div>
 

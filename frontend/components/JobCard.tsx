@@ -163,7 +163,7 @@ export default function JobCard({
               {job.title}
             </h3>
             <span className="shrink-0 text-xs text-t-muted whitespace-nowrap">
-              {timeAgo(job.first_seen)}
+              {timeAgo(job.posted_at || job.first_seen)}
             </span>
           </div>
 
